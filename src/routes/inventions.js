@@ -15,4 +15,18 @@ router.get('/inventions/:key?', (req, res) => {
 	});
 });
 
+router.get('/inventions/sort/desc', (req, res) => {
+	const inventions = Inventions.list().sort((a,b) => a-b)
+	res.send({ 
+		inventions
+	});
+});
+
+router.get('/inventions/sort/asc', (req, res) => {
+	const inventions = Inventions.list().sort((a,b) => b-a)
+	res.send({ 
+		inventions
+	});
+});
+
 module.exports = router;
